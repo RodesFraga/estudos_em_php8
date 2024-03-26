@@ -5,10 +5,17 @@ class Mensagem
     private $texto;
     private $css;
 
+    public function sucesso(string $mensagem): Mensagem
+    {
+        $this->css = 'alert alert-success';
+        $this->texto = $this->filtrar($mensagem);
+        return $this;
+    }
 
     public function redenrizar(): string
     {
-        return $this->texto = 'mensagem de texto masi uma vez';
+        return "<div class='{$this->css}'>{$this->texto}</div>";
+
     }
 
     private function filtrar(string $mensagem): string
